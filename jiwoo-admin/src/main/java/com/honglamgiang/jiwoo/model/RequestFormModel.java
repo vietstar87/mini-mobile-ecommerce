@@ -1,15 +1,27 @@
 package com.honglamgiang.jiwoo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class RequestFormModel {
 
+    @JsonIgnore
     Long requestFormId;
     String cusName;
     String cusEmail;
     String cusPhoneNo;
     String cusAddress;
     String cusIdentityNo;
-    String docImageUrl;
-    String requestFormType;
+    Integer bankId;
+    String bankAccountNo;
+    Double cashNumber;
+    String indentityImageFront;
+    String indentityImageBack;
+    String salaryImage;
+    String otherDocImageUrl;
+    Integer requestFormType;
+    Integer status;
+    @JsonIgnore
+    String requestFormTypeStr;
 
     public Long getRequestFormId() {
         return this.requestFormId;
@@ -59,20 +71,86 @@ public class RequestFormModel {
         this.cusIdentityNo = cusIdentityNo;
     }
 
-    public String getDocImageUrl() {
-        return this.docImageUrl;
+
+    public Integer getBankId() {
+        return this.bankId;
     }
 
-    public void setDocImageUrl(String docImageUrl) {
-        this.docImageUrl = docImageUrl;
+    public void setBankId(Integer bankId) {
+        this.bankId = bankId;
     }
 
-    public String getRequestFormType() {
+    public String getBankAccountNo() {
+        return this.bankAccountNo;
+    }
+
+    public void setBankAccountNo(String bankAccountNo) {
+        this.bankAccountNo = bankAccountNo;
+    }
+
+    public Double getCashNumber() {
+        return this.cashNumber;
+    }
+
+    public void setCashNumber(Double cashNumber) {
+        this.cashNumber = cashNumber;
+    }
+
+    public String getIndentityImageFront() {
+        return this.indentityImageFront;
+    }
+
+    public void setIndentityImageFront(String indentityImageFront) {
+        this.indentityImageFront = indentityImageFront;
+    }
+
+    public String getIndentityImageBack() {
+        return this.indentityImageBack;
+    }
+
+    public void setIndentityImageBack(String indentityImageBack) {
+        this.indentityImageBack = indentityImageBack;
+    }
+
+    public String getSalaryImage() {
+        return this.salaryImage;
+    }
+
+    public void setSalaryImage(String salaryImage) {
+        this.salaryImage = salaryImage;
+    }
+
+    public String getOtherDocImageUrl() {
+        return this.otherDocImageUrl;
+    }
+
+    public void setOtherDocImageUrl(String otherDocImageUrl) {
+        this.otherDocImageUrl = otherDocImageUrl;
+    }
+    
+
+    public Integer getRequestFormType() {
         return this.requestFormType;
     }
 
-    public void setRequestFormType(String requestFormType) {
+    public void setRequestFormType(Integer requestFormType) {
         this.requestFormType = requestFormType;
+    }
+
+    public String getRequestFormTypeStr() {
+        return this.requestFormTypeStr;
+    }
+
+    public void setRequestFormTypeStr(String requestFormTypeStr) {
+        this.requestFormTypeStr = requestFormTypeStr;
+    }
+
+    public Integer getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
     
 }

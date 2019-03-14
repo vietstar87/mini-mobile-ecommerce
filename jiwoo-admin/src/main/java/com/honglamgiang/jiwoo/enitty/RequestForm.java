@@ -40,12 +40,35 @@ public class RequestForm implements Serializable {
     @Column(name="cus_identity_no")
     String cusIdentityNo;
 
-    @Column(name="doc_image_url")
-    String docImageUrl;
+    @Column(name="bank_id")
+    Integer bankId;
+
+    @Column(name="bank_account_no")
+    String bankAccountNo;
+
+    @Column(name="cash_number")
+    Double cashNumber;
+
+    @Column(name="indentity_image_front")
+    String indentityImageFront;
+
+    @Column(name="indentity_image_back")
+    String indentityImageBack;
+
+    @Column(name="salary_image")
+    String salaryImage;
+
+    @Column(name="other_doc_image_url")
+    String otherDocImageUrl;
 
     @Column(name="request_form_type")
-    String requestFormType;
+    Integer requestFormType;
 
+    @Column(name="status")
+    Integer status;
+
+
+    
     public Long getRequestFormId() {
         return this.requestFormId;
     }
@@ -94,20 +117,76 @@ public class RequestForm implements Serializable {
         this.cusIdentityNo = cusIdentityNo;
     }
 
-    public String getDocImageUrl() {
-        return this.docImageUrl;
-    }
-
-    public void setDocImageUrl(String docImageUrl) {
-        this.docImageUrl = docImageUrl;
-    }
-
-    public String getRequestFormType() {
+    public Integer getRequestFormType() {
         return this.requestFormType;
     }
 
-    public void setRequestFormType(String requestFormType) {
+    public void setRequestFormType(Integer requestFormType) {
         this.requestFormType = requestFormType;
+    }
+
+    public Integer getBankId() {
+        return this.bankId;
+    }
+
+    public void setBankId(Integer bankId) {
+        this.bankId = bankId;
+    }
+
+    public String getBankAccountNo() {
+        return this.bankAccountNo;
+    }
+
+    public void setBankAccountNo(String bankAccountNo) {
+        this.bankAccountNo = bankAccountNo;
+    }
+
+    public Double getCashNumber() {
+        return this.cashNumber;
+    }
+
+    public void setCashNumber(Double cashNumber) {
+        this.cashNumber = cashNumber;
+    }
+
+    public String getIndentityImageFront() {
+        return this.indentityImageFront;
+    }
+
+    public void setIndentityImageFront(String indentityImageFront) {
+        this.indentityImageFront = indentityImageFront;
+    }
+
+    public String getIndentityImageBack() {
+        return this.indentityImageBack;
+    }
+
+    public void setIndentityImageBack(String indentityImageBack) {
+        this.indentityImageBack = indentityImageBack;
+    }
+
+    public String getSalaryImage() {
+        return this.salaryImage;
+    }
+
+    public void setSalaryImage(String salaryImage) {
+        this.salaryImage = salaryImage;
+    }
+
+    public String getOtherDocImageUrl() {
+        return this.otherDocImageUrl;
+    }
+
+    public void setOtherDocImageUrl(String otherDocImageUrl) {
+        this.otherDocImageUrl = otherDocImageUrl;
+    }
+
+    public Integer getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
     
 }

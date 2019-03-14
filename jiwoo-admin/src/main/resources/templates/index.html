@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Jiwoo Admin - Bảng điều khiển</title>
-
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-  <!-- Page level plugin CSS-->
-  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
-
-</head>
+<head th:replace="layout/head :: head"></head>
 
 <body id="page-top">
 
@@ -64,7 +45,7 @@
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
           <a class="dropdown-item" href="#">Cấu hình</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Đăng xuất</a>
+          <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">Đăng xuất</a>
         </div>
       </li>
     </ul>
@@ -74,19 +55,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="sidebar navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Quản lý người dùng</span>
-        </a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Quản lý yêu cầu</span></a>
-      </li>
-    </ul>
+    <ul th:replace="layout/sidebar.html :: sidebar"></ul>
 
     <div id="content-wrapper">
 
@@ -119,31 +88,26 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Trần Quang Hợp</td>
-                    <td>hoptq@honglamgiang.com</td>
-                    <td>0942040068</td>
-                    <td>Cầu Giấy</td>
-                    <td>012410309</td>
-                    <td><span class="badge badge-primary">Chuyển tiền</span></td>
+                  <tr th:each="requestFormItem, index : ${listRequestFormModel}">
+                    <td th:text="${index.count}"></td>
+                    <td th:text="${requestFormItem.cusName}"></td>
+                    <td th:text="${requestFormItem.cusEmail}"></td>
+                    <td th:text="${requestFormItem.cusPhoneNo}"></td>
+                    <td th:text="${requestFormItem.cusAddress}"></td>
+                    <td th:text="${requestFormItem.cusIdentityNo}"></td>
                     <td>
-                      <button class="btn btn-sm btn-info">Xem chi tiết</button>
-                      <button class="btn btn-sm btn-success">Trả lời mail</button>
+                      <span th:if="${requestFormItem.requestFormType} == 1" class="badge badge-primary" th:text="${requestFormItem.requestFormTypeStr}"></span>
+                      <span th:if="${requestFormItem.requestFormType} == 2" class="badge badge-warning" th:text="${requestFormItem.requestFormTypeStr}"></span>
+                      <span th:if="${requestFormItem.requestFormType} == 3" class="badge badge-success" th:text="${requestFormItem.requestFormTypeStr}"></span>
                     </td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Nguyễn Xuân Việt</td>
-                    <td>vietnx@honglamgiang.com</td>
-                    <td>0904621187</td>
-                    <td>Hai Bà Trưng</td>
-                    <td>012398473</td>
-                    <td><span class = "badge badge-warning">Giấy Tờ</span></td>
                     <td>
-                      <button class="btn btn-sm btn-info">Xem chi tiết</button>
-                      <button class="btn btn-sm btn-success">Trả lời mail</button>
-                    </td>
+                        <button class="btn btn-sm btn-info" th:onclick="|viewDetail('${requestFormItem.requestFormId}')|" >Xem chi tiết</button>
+                        <a 
+                          th:if="${requestFormItem.status} == 0" 
+                          class="btn btn-sm btn-success" 
+                          target="_blank" 
+                          th:href="@{https://mail.google.com/mail/u/0/(view=cm, fs=1, to=${requestFormItem.cusEmail}, su='Trả lời yêu cầu chuyển tiền')}">Trả lời mail</a>
+                      </td>
                   </tr>
                 </tbody>
               </table>
@@ -177,22 +141,22 @@
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn đăng xuất?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Ấn đăng xuất để kết thúc phiên đăng nhập của bạn.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" th:href="@{/logout}">Đăng xuất</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
