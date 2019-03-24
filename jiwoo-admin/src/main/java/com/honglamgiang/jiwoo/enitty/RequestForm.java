@@ -58,8 +58,14 @@ public class RequestForm implements Serializable {
     @Column(name="salary_image")
     String salaryImage;
 
-    @Column(name="other_doc_image_url")
-    String otherDocImageUrl;
+    @Column(name="passport_image")
+    String passportImage;
+
+    @Column(name="bank_account_image")
+    String bankAccountImage;
+
+    @Column(name="other_doc_image")
+    String otherDocImage;
 
     @Column(name="request_form_type")
     Integer requestFormType;
@@ -67,7 +73,8 @@ public class RequestForm implements Serializable {
     @Column(name="status")
     Integer status;
 
-
+    @Column(name="reason")
+    String reason;
     
     public Long getRequestFormId() {
         return this.requestFormId;
@@ -173,12 +180,12 @@ public class RequestForm implements Serializable {
         this.salaryImage = salaryImage;
     }
 
-    public String getOtherDocImageUrl() {
-        return this.otherDocImageUrl;
+    public String getOtherDocImage() {
+        return this.otherDocImage;
     }
 
-    public void setOtherDocImageUrl(String otherDocImageUrl) {
-        this.otherDocImageUrl = otherDocImageUrl;
+    public void setOtherDocImage(String otherDocImage) {
+        this.otherDocImage = otherDocImage;
     }
 
     public Integer getStatus() {
@@ -187,6 +194,30 @@ public class RequestForm implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getReason() {
+        return this.reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public String getPassportImage() {
+        return this.passportImage;
+    }
+
+    public void setPassportImage(String passportImage) {
+        this.passportImage = passportImage;
+    }
+
+    public String getBankAccountImage() {
+        return this.bankAccountImage;
+    }
+
+    public void setBankAccountImage(String bankAccountImage) {
+        this.bankAccountImage = bankAccountImage;
     }
     
 }

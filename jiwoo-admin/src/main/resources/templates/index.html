@@ -61,60 +61,8 @@
 
       <div class="container-fluid">
 
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="#">Trang chủ</a>
-          </li>
-          <li class="breadcrumb-item active">Quản lý</li>
-        </ol>
-
-        <!-- DataTables Example -->
-        <div class="card mb-3">
-          <div class="card-header"><i class="fas fa-table"></i> Danh sách yêu cầu</div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th>STT</th>
-                    <th>Tên khách hàng</th>
-                    <th>Địa chỉ email</th>
-                    <th>Số điện thoại</th>
-                    <th>Địa chỉ</th>
-                    <th>Số cmt/hộ chiếu</th>
-                    <th>Loại yêu cầu</th>
-                    <th>Thao tác</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr th:each="requestFormItem, index : ${listRequestFormModel}">
-                    <td th:text="${index.count}"></td>
-                    <td th:text="${requestFormItem.cusName}"></td>
-                    <td th:text="${requestFormItem.cusEmail}"></td>
-                    <td th:text="${requestFormItem.cusPhoneNo}"></td>
-                    <td th:text="${requestFormItem.cusAddress}"></td>
-                    <td th:text="${requestFormItem.cusIdentityNo}"></td>
-                    <td>
-                      <span th:if="${requestFormItem.requestFormType} == 1" class="badge badge-primary" th:text="${requestFormItem.requestFormTypeStr}"></span>
-                      <span th:if="${requestFormItem.requestFormType} == 2" class="badge badge-warning" th:text="${requestFormItem.requestFormTypeStr}"></span>
-                      <span th:if="${requestFormItem.requestFormType} == 3" class="badge badge-success" th:text="${requestFormItem.requestFormTypeStr}"></span>
-                    </td>
-                    <td>
-                        <button class="btn btn-sm btn-info" th:onclick="|viewDetail('${requestFormItem.requestFormId}')|" >Xem chi tiết</button>
-                        <a 
-                          th:if="${requestFormItem.status} == 0" 
-                          class="btn btn-sm btn-success" 
-                          target="_blank" 
-                          th:href="@{https://mail.google.com/mail/u/0/(view=cm, fs=1, to=${requestFormItem.cusEmail}, su='Trả lời yêu cầu chuyển tiền')}">Trả lời mail</a>
-                      </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="card-footer small text-muted">Dữ liệu cập nhật lúc: 23:59</div>
-        </div>
+        <H1>Welcome to Jiwoo System Admin</H1>
+        
 
       </div>
       <!-- /.container-fluid -->

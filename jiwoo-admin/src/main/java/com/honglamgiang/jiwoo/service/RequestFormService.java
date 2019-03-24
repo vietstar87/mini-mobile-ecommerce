@@ -19,15 +19,47 @@ public class RequestFormService {
     @Autowired
     RequestFormRepository requestFormRepository;
 
-    public void addRequestForm(RequestFormModel requestFormModel) {
+    public Long addRequestForm(RequestFormModel requestFormModel) {
         RequestForm entity = new RequestForm();
         entity.setCusName(requestFormModel.getCusName());
         entity.setCusEmail(requestFormModel.getCusEmail());
         entity.setCusPhoneNo(requestFormModel.getCusPhoneNo());
         entity.setCusAddress(requestFormModel.getCusAddress());
         entity.setCusIdentityNo(requestFormModel.getCusIdentityNo());
+        entity.setBankId(requestFormModel.getBankId());
+        entity.setBankAccountNo(requestFormModel.getBankAccountNo());
+        entity.setCashNumber(requestFormModel.getCashNumber());
         entity.setRequestFormType(requestFormModel.getRequestFormType());
-        requestFormRepository.save(entity);
+        entity.setIndentityImageFront(requestFormModel.getIndentityImageFront());
+        entity.setIndentityImageBack(requestFormModel.getIndentityImageBack());
+        entity.setPassportImage(requestFormModel.getPassportImage());
+        entity.setSalaryImage(requestFormModel.getSalaryImage());
+        entity.setBankAccountImage(requestFormModel.getBankAccountImage());
+        entity.setOtherDocImage(requestFormModel.getOtherDocImage());
+        entity.setStatus(0);
+        RequestForm requestFormAdded = requestFormRepository.save(entity);
+        return requestFormAdded.getRequestFormId();
+    }
+
+    public Long editRequestForm(RequestFormModel requestFormModel) {
+        RequestForm entity =  requestFormRepository.findById(requestFormModel.getRequestFormId()).get();
+        entity.setCusName(requestFormModel.getCusName() != null ? requestFormModel.getCusName() : entity.getCusName());
+        entity.setCusEmail(requestFormModel.getCusEmail() != null ? requestFormModel.getCusEmail() : entity.getCusEmail());
+        entity.setCusPhoneNo(requestFormModel.getCusPhoneNo() != null ? requestFormModel.getCusPhoneNo() : entity.getCusPhoneNo());
+        entity.setCusAddress(requestFormModel.getCusAddress() != null ? requestFormModel.getCusAddress() : entity.getCusAddress());
+        entity.setCusIdentityNo(requestFormModel.getCusIdentityNo() != null ? requestFormModel.getCusIdentityNo() : entity.getCusIdentityNo());
+        entity.setBankId(requestFormModel.getBankId() != null ? requestFormModel.getBankId() : entity.getBankId());
+        entity.setBankAccountNo(requestFormModel.getBankAccountNo() != null ? requestFormModel.getBankAccountNo() : entity.getBankAccountNo());
+        entity.setCashNumber(requestFormModel.getCashNumber() != null ? requestFormModel.getCashNumber() : entity.getCashNumber());
+        entity.setRequestFormType(requestFormModel.getRequestFormType() != null ? requestFormModel.getRequestFormType() : entity.getRequestFormType());
+        entity.setIndentityImageFront(requestFormModel.getIndentityImageFront() != null ? requestFormModel.getIndentityImageFront() : entity.getIndentityImageFront());
+        entity.setIndentityImageBack(requestFormModel.getIndentityImageBack() != null ? requestFormModel.getIndentityImageBack() : entity.getIndentityImageBack());
+        entity.setPassportImage(requestFormModel.getPassportImage() != null ? requestFormModel.getPassportImage() : entity.getPassportImage());
+        entity.setSalaryImage(requestFormModel.getSalaryImage() != null ? requestFormModel.getSalaryImage() : entity.getSalaryImage());
+        entity.setBankAccountImage(requestFormModel.getBankAccountImage() != null ? requestFormModel.getBankAccountImage() : entity.getBankAccountImage());
+        entity.setOtherDocImage(requestFormModel.getOtherDocImage() != null ? requestFormModel.getOtherDocImage() : entity.getOtherDocImage());
+        RequestForm requestFormUpdated = requestFormRepository.save(entity);
+        return requestFormUpdated.getRequestFormId();
     }
 
     public void deleteRequestForm(Long requestFormId) {
@@ -48,10 +80,13 @@ public class RequestFormService {
         requestFormModel.setCashNumber(requestFormEntity.getCashNumber());
         requestFormModel.setIndentityImageFront(requestFormEntity.getIndentityImageFront());
         requestFormModel.setIndentityImageBack(requestFormEntity.getIndentityImageBack());
+        requestFormModel.setPassportImage(requestFormEntity.getPassportImage());
         requestFormModel.setSalaryImage(requestFormEntity.getSalaryImage());
-        requestFormModel.setOtherDocImageUrl(requestFormEntity.getOtherDocImageUrl());
+        requestFormModel.setBankAccountImage(requestFormEntity.getBankAccountImage());
+        requestFormModel.setOtherDocImage(requestFormEntity.getOtherDocImage());
         requestFormModel.setRequestFormType(requestFormEntity.getRequestFormType());
         requestFormModel.setStatus(requestFormEntity.getStatus());
+        requestFormModel.setReason(requestFormEntity.getReason());
         return requestFormModel;
     }
 

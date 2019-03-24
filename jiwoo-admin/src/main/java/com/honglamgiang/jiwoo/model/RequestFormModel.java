@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class RequestFormModel {
 
-    @JsonIgnore
     Long requestFormId;
     String cusName;
     String cusEmail;
@@ -14,12 +13,28 @@ public class RequestFormModel {
     Integer bankId;
     String bankAccountNo;
     Double cashNumber;
+
     String indentityImageFront;
+    String indentityImageFrontData;
+
     String indentityImageBack;
+    String indentityImageBackData;
+
     String salaryImage;
-    String otherDocImageUrl;
+    String salaryImageData;
+
+    String passportImage;
+    String passportImageData;
+
+    String bankAccountImage;
+    String bankAccountImageData;
+
+    String otherDocImage;
+    String otherDocImageData;
+
     Integer requestFormType;
     Integer status;
+    String reason;
     @JsonIgnore
     String requestFormTypeStr;
 
@@ -120,12 +135,12 @@ public class RequestFormModel {
         this.salaryImage = salaryImage;
     }
 
-    public String getOtherDocImageUrl() {
-        return this.otherDocImageUrl;
+    public String getOtherDocImage() {
+        return this.otherDocImage;
     }
 
-    public void setOtherDocImageUrl(String otherDocImageUrl) {
-        this.otherDocImageUrl = otherDocImageUrl;
+    public void setOtherDocImage(String otherDocImage) {
+        this.otherDocImage = otherDocImage;
     }
     
 
@@ -151,6 +166,78 @@ public class RequestFormModel {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getReason() {
+        return this.reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public String getOtherDocImageData() {
+        return this.otherDocImageData;
+    }
+
+    public void setOtherDocImageData(String otherDocImageData) {
+        this.otherDocImageData = otherDocImageData;
+    }
+
+    public String getIndentityImageFrontData() {
+        return this.indentityImageFrontData;
+    }
+
+    public void setIndentityImageFrontData(String indentityImageFrontData) {
+        this.indentityImageFrontData = indentityImageFrontData;
+    }
+
+    public String getIndentityImageBackData() {
+        return this.indentityImageBackData;
+    }
+
+    public void setIndentityImageBackData(String indentityImageBackData) {
+        this.indentityImageBackData = indentityImageBackData;
+    }
+
+    public String getSalaryImageData() {
+        return this.salaryImageData;
+    }
+
+    public void setSalaryImageData(String salaryImageData) {
+        this.salaryImageData = salaryImageData;
+    }
+
+    public String getPassportImage() {
+        return this.passportImage;
+    }
+
+    public void setPassportImage(String passportImage) {
+        this.passportImage = passportImage;
+    }
+
+    public String getPassportImageData() {
+        return this.passportImageData;
+    }
+
+    public void setPassportImageData(String passportImageData) {
+        this.passportImageData = passportImageData;
+    }
+
+    public String getBankAccountImage() {
+        return this.bankAccountImage;
+    }
+
+    public void setBankAccountImage(String bankAccountImage) {
+        this.bankAccountImage = bankAccountImage;
+    }
+
+    public String getBankAccountImageData() {
+        return this.bankAccountImageData;
+    }
+
+    public void setBankAccountImageData(String bankAccountImageData) {
+        this.bankAccountImageData = bankAccountImageData;
     }
     
 }
