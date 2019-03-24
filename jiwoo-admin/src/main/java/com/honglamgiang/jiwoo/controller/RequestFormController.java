@@ -70,7 +70,7 @@ public class RequestFormController {
     public String uploadImage(@RequestBody ImageData imageData) {
         RequestFormModel requestFormModel = requestFormService.getRequestFormModelById(imageData.getRequestFormId());
         String fileName = "";
-        String path = "jiwoo/upload/";
+        String path = "/jiwoo/upload/";
         if(imageData.getImageType().equals(IDENTITY_FRONT_TYPE)){
             fileName = "intdentity_front_"+imageData.getRequestFormId()+".jpg";
             requestFormModel.setIndentityImageFront(path+fileName);
