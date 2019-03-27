@@ -10,7 +10,7 @@ public class RequestFormModel {
     String cusPhoneNo;
     String cusAddress;
     String cusIdentityNo;
-    Integer bankId;
+    Long bankId;
     String bankAccountNo;
     Double cashNumber;
 
@@ -37,6 +37,9 @@ public class RequestFormModel {
     String reason;
     @JsonIgnore
     String requestFormTypeStr;
+
+    // @JsonIgnore
+    String bankName;
 
     public Long getRequestFormId() {
         return this.requestFormId;
@@ -87,11 +90,11 @@ public class RequestFormModel {
     }
 
 
-    public Integer getBankId() {
+    public Long getBankId() {
         return this.bankId;
     }
 
-    public void setBankId(Integer bankId) {
+    public void setBankId(Long bankId) {
         this.bankId = bankId;
     }
 
@@ -238,6 +241,14 @@ public class RequestFormModel {
 
     public void setBankAccountImageData(String bankAccountImageData) {
         this.bankAccountImageData = bankAccountImageData;
+    }
+
+    public String getBankName() {
+        return this.bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
     }
     
 }

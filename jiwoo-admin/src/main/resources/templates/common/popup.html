@@ -1,0 +1,167 @@
+<div th:fragment="reason-popup" class="modal fade" id="input-reason" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reason-label">Nhập lý do</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <div class="card-body"> -->
+        <form method="POST">
+          <div class="form-group">
+            <textarea id="reasontxt" class="form-control" placeholder="Nhập lý do tiếp nhận/từ chối"></textarea>
+          </div>
+        </form>
+        <!-- </div> -->
+      </div>
+      <div class="modal-footer">
+        <div class="form-group">
+          <button id="confirmBtt" class="btn btn-primary">Xác nhận</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div th:fragment="view-detail-popup" class="modal fade" id="detail_form_modal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thông tin chuyển tiển</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body">
+          <form method="POST">
+            <div class="form-group">
+              <div class="form-label-group">
+                <input type="text" readonly id="cusName" class="form-control" required="required">
+                <label for="cusName">Họ tên</label>
+              </div>
+              <br>
+              <div class="form-label-group">
+                <input type="email" readonly id="cusEmail" class="form-control" placeholder="Địa chỉ email"
+                  required="required">
+                <label for="cusEmail">Địa chỉ email</label>
+              </div>
+              <br>
+              <div class="form-label-group">
+                <input type="number" readonly id="cusPhoneNo" class="form-control" placeholder="Số điện thoại"
+                  required="required">
+                <label for="cusPhoneNo">Số điện thoại</label>
+              </div>
+              <br>
+              <div class="form-label-group">
+                <input type="text" readonly id="cusAddress" class="form-control" placeholder="Địa chỉ"
+                  required="required">
+                <label for="cusAddress">Địa chỉ</label>
+              </div>
+              <br>
+              <div class="form-label-group">
+                <input type="text" readonly id="cusIdentityNo" class="form-control"
+                  placeholder="Chứng minh thư hoặc hộ chiếu">
+                <label for="cusIdentityNo">Số CMT/Hộ chiếu</label>
+              </div>
+              <br>
+              <div class="form-label-group">
+                <input type="number" readonly id="cashNumber" class="form-control" placeholder="Số tiền chuyển"
+                  required="required">
+                <label for="cashNumber">Số tiền chuyển</label>
+              </div>
+              <br>
+              <div class="form-label-group">
+                <input type="text" readonly id="bankName" class="form-control" placeholder="Ngân hàng" required="required">
+                <label for="bankName">Ngân Hàng</label>
+              </div>
+              <br>
+              <div class="form-label-group">
+                <input type="text" readonly id="bankAccountNo" class="form-control" placeholder="Địa chỉ"
+                  required="required">
+                <label for="bankAccountNo">Số tài khoản</label>
+              </div>
+              <br>
+              <div class="form-label-group">
+                <img id="cmtTruoc" width="100%" height="100%" class="img-rounded" alt="CMND mặt trước">
+                <label for="cmtTruoc" style="color: red">CMND mặt trước</label>
+              </div>
+              <br>
+              <div class="form-label-group">
+                <img id="cmtSau" width="100%" height="100%" class="img-rounded" alt="CMND mặt sau">
+                <label for="cmtSau" style="color: red">CMND mặt sau</label>
+              </div>
+              <br>
+              <div class="form-label-group">
+                <img id="hochieu" width="100%" height="100%" class="img-rounded" alt="Ảnh hộ chiếu">
+                <label for="hochieu" style="color: red">Ảnh hộ chiếu</label>
+              </div>
+              <br>
+              <div class="form-label-group">
+                <img id="salary" width="100%" height="100%" class="img-rounded"
+                  alt="Bảng lương">
+                <label for="salary" style="color: red">Bảng lương 3 tháng gần nhất</label>
+              </div>
+              <br>
+              <div class="form-label-group">
+                <img id="bankAccountImage" width="100%" height="100%" class="img-rounded" alt="Ảnh tài khoản">
+                <label for="bankAccountImage" style="color: red">Ảnh tài khoản</label>
+              </div>
+              <div class="form-label-group">
+                <img id="otherDocs" width="100%" height="100%" class="img-rounded" alt="Ảnh hộ chiếu">
+                <label for="otherDocs" style="color: red">Giấy tờ khác</label>
+              </div>
+              <br>
+              <div>
+                <label>Lý do tiếp nhận/từ chối</label>
+              </div>
+              <div class="form-label-group">
+                <textarea disabled id="reason" class="form-control"></textarea>
+              </div>
+              <br>
+              <div id="rejectBtt" class="form-label-group">
+                <button class="col-12 btn btn-danger" type="button">Hủy</button>
+              </div>
+              <br>
+              <div id="approveBtt" class="form-label-group">
+                <button class="col-12 btn btn-success" type="button">Duyệt</button>
+              </div>
+              <div id="rejectedBtt" class="form-label-group">
+                <button disabled class="col-12 btn btn-danger" type="button">Đã từ chối</button>
+              </div>
+              <br>
+              <div id="approvedBtt" class="form-label-group">
+                <button disabled class="col-12 btn btn-success" type="button">Đã tiếp nhận</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div th:fragment="logout-popup" class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn đăng xuất?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Ấn đăng xuất để kết thúc phiên đăng nhập của bạn.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" th:href="@{/logout}">Đăng xuất</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,8 +2,10 @@ package com.honglamgiang.jiwoo.controller;
 
 import java.util.List;
 
+import com.honglamgiang.jiwoo.model.BankModel;
 import com.honglamgiang.jiwoo.model.ImageData;
 import com.honglamgiang.jiwoo.model.RequestFormModel;
+import com.honglamgiang.jiwoo.service.BankService;
 import com.honglamgiang.jiwoo.service.RequestFormService;
 import com.honglamgiang.jiwoo.service.UploadService;
 
@@ -21,6 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class RequestFormController {
     @Autowired
     RequestFormService requestFormService;
+
+    @Autowired
+    BankService bankService;
 
     @Autowired
     UploadService uploadService;
@@ -41,18 +46,24 @@ public class RequestFormController {
     @RequestMapping(value = "/transfer/{requestFormId}", method=RequestMethod.GET)
     public RequestFormModel getTransferDetail(@PathVariable("requestFormId") Long requestFormId) {
         RequestFormModel returnModel = requestFormService.getRequestFormModelById(requestFormId);
+        BankModel bankModel = bankService.getBankById(returnModel.getBankId());
+        returnModel.setBankName(bankModel.getBankName());
         return returnModel;
     }
 
     @RequestMapping(value = "/loan/{requestFormId}", method=RequestMethod.GET)
     public RequestFormModel getLoanDetail(@PathVariable("requestFormId") Long requestFormId) {
         RequestFormModel returnModel = requestFormService.getRequestFormModelById(requestFormId);
+        BankModel bankModel = bankService.getBankById(returnModel.getBankId());
+        returnModel.setBankName(bankModel.getBankName());
         return returnModel;
     }
 
     @RequestMapping(value = "/docs/{requestFormId}", method=RequestMethod.GET)
     public RequestFormModel getDocsDetail(@PathVariable("requestFormId") Long requestFormId) {
         RequestFormModel returnModel = requestFormService.getRequestFormModelById(requestFormId);
+        BankModel bankModel = bankService.getBankById(returnModel.getBankId());
+        returnModel.setBankName(bankModel.getBankName());
         return returnModel;
     }
 

@@ -58,6 +58,8 @@ public class RequestFormService {
         entity.setSalaryImage(requestFormModel.getSalaryImage() != null ? requestFormModel.getSalaryImage() : entity.getSalaryImage());
         entity.setBankAccountImage(requestFormModel.getBankAccountImage() != null ? requestFormModel.getBankAccountImage() : entity.getBankAccountImage());
         entity.setOtherDocImage(requestFormModel.getOtherDocImage() != null ? requestFormModel.getOtherDocImage() : entity.getOtherDocImage());
+        entity.setStatus( (requestFormModel.getStatus() != null && requestFormModel.getStatus() != 0) ? requestFormModel.getStatus() : entity.getStatus());
+        entity.setReason(requestFormModel.getReason() != null ? requestFormModel.getReason() : entity.getReason());
         RequestForm requestFormUpdated = requestFormRepository.save(entity);
         return requestFormUpdated.getRequestFormId();
     }

@@ -41,7 +41,7 @@ public class RequestForm implements Serializable {
     String cusIdentityNo;
 
     @Column(name="bank_id")
-    Integer bankId;
+    Long bankId;
 
     @Column(name="bank_account_no")
     String bankAccountNo;
@@ -132,11 +132,11 @@ public class RequestForm implements Serializable {
         this.requestFormType = requestFormType;
     }
 
-    public Integer getBankId() {
+    public Long getBankId() {
         return this.bankId;
     }
 
-    public void setBankId(Integer bankId) {
+    public void setBankId(Long bankId) {
         this.bankId = bankId;
     }
 

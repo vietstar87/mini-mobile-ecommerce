@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.honglamgiang.jiwoo.model.BankModel;
 import com.honglamgiang.jiwoo.model.RequestFormModel;
+import com.honglamgiang.jiwoo.service.BankService;
 import com.honglamgiang.jiwoo.service.RequestFormService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class MainController {
 
     @Autowired
     RequestFormService requestFormService;
+
+    @Autowired
+    BankService bankService;
 
     @Autowired
     HttpSession session;
@@ -90,6 +95,17 @@ public class MainController {
             });
             model.addAttribute("listDocsFormModel", listDocsFormModel);
             return "docs";
+        }else{
+            return "redirect:/login";
+        }
+    }
+
+    @RequestMapping(value="/bank", method=RequestMethod.GET)
+    public String bank(Model model) {
+        if(checkLogin()){
+            List<BankModel> listBankModels = bankService.getAllBank();
+            model.addAttribute("listBankModels", listBankModels);
+            return "bank";
         }else{
             return "redirect:/login";
         }

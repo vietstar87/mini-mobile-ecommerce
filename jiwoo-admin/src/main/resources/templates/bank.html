@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="layout/head :: head"></head>
+
+<body id="page-top">
+
+  <nav th:replace="layout/navbar.html :: navbar"></nav>
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul th:replace="layout/sidebar.html :: sidebar"></ul>
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Trang chủ</a>
+          </li>
+          <li class="breadcrumb-item active">Quản lý</li>
+        </ol>
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header"><i class="fas fa-table"></i> Danh sách ngân hàng</div>
+          <div class="card-body">
+            <button class="btn btn-primary" >Thêm ngân hàng</button>
+            <div class="row">&nbsp;</div>
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>Tên Ngân Hàng</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="bankItem, index : ${listBankModels}">
+                        <td th:text="${index.count}"></td>
+                        <td th:text="${bankItem.bankName}"></td>
+                        <td>
+                            <button class="btn btn-sm btn-warning" >Sửa</button>
+                            <button class="btn btn-sm btn-danger" >Xóa</button>
+                        </td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">Dữ liệu cập nhật lúc: 23:59</div>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+
+      <!-- Modal xem chi tiết -start-->
+      <div th:replace="common/popup.html :: view-detail-popup"></div>
+      <!-- Modal xem chi tiết -end-->
+
+      <!-- Modal nhập lý do -start-->
+      <div th:replace="common/popup.html :: reason-popup"></div>
+      <!-- Modal nhập lý do -end-->
+
+      <!-- Sticky Footer -->
+      <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright © Jiwoo Admin 2019</span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div th:replace="common/popup.html :: logout-popup"></div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Page level plugin JavaScript-->
+  <!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
+  <script src="vendor/datatables/jquery.dataTables.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/demo/datatables-demo.js"></script>
+  <script src="js/sb-admin.min.js"></script>
+
+  <script src="js/common-script.js"></script>
+</body>
+
+</html>
