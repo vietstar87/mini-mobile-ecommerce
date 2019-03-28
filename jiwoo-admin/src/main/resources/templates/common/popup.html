@@ -165,3 +165,37 @@
     </div>
   </div>
 </div>
+
+
+<div th:fragment="add-edit-bank-popup" class="modal fade" id="add-edit-bank-popup" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thêm ngân hàng</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body">
+          <form method="POST">
+            <div class="form-group">
+              <div class="form-label-group">
+                <input type="hidden" id="bankId" />
+                <input type="text" id="bankName" class="form-control" required="required">
+                <label for="bankName">Tên ngân hàng</label>
+              </div>
+              <br>
+              <div class="form-label-group">
+                <button class="col-12 btn btn-success" id="addBankBtt" type="button">Thêm</button>
+                <button class="col-12 btn btn-primary" id="editBankBtt" type="button">Sửa</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

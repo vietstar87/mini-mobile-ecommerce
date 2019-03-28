@@ -28,7 +28,7 @@
         <div class="card mb-3">
           <div class="card-header"><i class="fas fa-table"></i> Danh sách ngân hàng</div>
           <div class="card-body">
-            <button class="btn btn-primary" >Thêm ngân hàng</button>
+            <button class="btn btn-primary" id="openAddBankBtt">Thêm ngân hàng</button>
             <div class="row">&nbsp;</div>
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -44,8 +44,8 @@
                         <td th:text="${index.count}"></td>
                         <td th:text="${bankItem.bankName}"></td>
                         <td>
-                            <button class="btn btn-sm btn-warning" >Sửa</button>
-                            <button class="btn btn-sm btn-danger" >Xóa</button>
+                            <button class="btn btn-sm btn-warning" th:onclick="|openEditModal('${bankItem.bankId}')|" >Sửa</button>
+                            <button class="btn btn-sm btn-danger" th:onclick="|deleteBank('${bankItem.bankId}')|" >Xóa</button>
                         </td>
                     </tr>
                 </tbody>
@@ -58,13 +58,9 @@
       </div>
       <!-- /.container-fluid -->
 
-      <!-- Modal xem chi tiết -start-->
-      <div th:replace="common/popup.html :: view-detail-popup"></div>
-      <!-- Modal xem chi tiết -end-->
-
-      <!-- Modal nhập lý do -start-->
-      <div th:replace="common/popup.html :: reason-popup"></div>
-      <!-- Modal nhập lý do -end-->
+      <!-- Modal thêm ngân hàng -start-->
+      <div th:replace="common/popup.html :: add-edit-bank-popup"></div>
+      <!-- Modal thêm ngân hàng -end-->
 
       <!-- Sticky Footer -->
       <footer class="sticky-footer">
@@ -106,6 +102,97 @@
   <script src="js/sb-admin.min.js"></script>
 
   <script src="js/common-script.js"></script>
+
+  <script>
+  $('#openAddBankBtt').click(function () {
+    
+    $('#bankId').val('');
+    $('#bankName').val('');
+    $('#addBankBtt').show();
+    $('#editBankBtt').hide();
+    $('#add-edit-bank-popup').modal();
+  });
+
+  $('#addBankBtt').click(function () {
+    var _bankName = $('#bankName').val();
+    var params = {
+                    bankName: _bankName
+                };
+    $.ajax({
+      url:'/jiwoo/bank/add/',
+      type:"POST",
+      data:JSON.stringify(params),
+      contentType:"application/json; charset=utf-8",
+      dataType:"json",
+      success: function(data){
+        if(data > 0){
+          alert("Thêm ngân hàng thành công!");
+          location.reload();
+        }else{
+          alert("Thêm ngân hàng thất bại");
+        }
+      },
+      error: function () {
+        alert("Có lỗi xảy ra");
+      }
+    });
+  });
+
+  $('#editBankBtt').click(function () {
+    var _bankId = $('#bankId').val();
+    var _bankName = $('#bankName').val();
+    var params = {
+                    bankId : _bankId,
+                    bankName : _bankName
+                };
+    $.ajax({
+      url:'/jiwoo/bank/edit/',
+      type:"POST",
+      data:JSON.stringify(params),
+      contentType:"application/json; charset=utf-8",
+      dataType:"json",
+      success: function(data){
+        location.reload();
+      },
+      error: function () {
+        alert("Có lỗi xảy ra");
+      }
+    });
+  });
+
+  function deleteBank(bankId) {
+    $.ajax({
+      url:'/jiwoo/bank/delete/'+bankId,
+      type:"POST",
+      success: function(data){
+        location.reload();
+      },
+      error: function () {
+        alert("Có lỗi xảy ra");
+      }
+    });
+  }
+
+  function openEditModal(_bankId) {
+    $.ajax({
+      url:'/jiwoo/bank/'+_bankId,
+      type:"GET",
+      success: function(data){
+        $('#bankId').val(data.bankId);
+        $('#bankName').val(data.bankName);
+        $('#addBankBtt').hide();
+        $('#editBankBtt').show();
+        $('#add-edit-bank-popup').modal();
+      },
+      error: function (e) {
+        console.log(e);
+        
+        alert("Có lỗi xảy ra");
+      }
+    });
+  }
+
+  </script>
 </body>
 
 </html>
