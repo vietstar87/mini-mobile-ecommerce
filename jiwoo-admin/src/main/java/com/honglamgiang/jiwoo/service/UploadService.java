@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UploadService {
 
-    // private final static String UPLOAD_FOLDER_PATH = "c:/tmp/";
-    private final static String UPLOAD_FOLDER_PATH = "C:/Users/tranq/Git/mini-mobile-ecommerce/jiwoo-admin/src/main/resources/static/upload/";
+    private final static String UPLOAD_FOLDER_PATH = "C:/Users/Administrator/hoptq/apache-tomcat-9.0.16/webapps/jiwoo/WEB-INF/classes/static/upload/";
+    // private final static String UPLOAD_FOLDER_PATH = "C:/Users/tranq/Git/mini-mobile-ecommerce/jiwoo-admin/src/main/resources/static/upload/";
 
     public Boolean convertBase64StringToImage(String encodedString, String fileName){
         byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
